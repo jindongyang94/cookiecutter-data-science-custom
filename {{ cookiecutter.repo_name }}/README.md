@@ -6,6 +6,7 @@
 Project Organization
 ------------
 
+```
 ├── LICENSE
 ├── Makefile           <- Makefile with commands like `make data` or `make train`
 ├── README.md          <- The top-level README for developers using this project.
@@ -54,6 +55,8 @@ Project Organization
 ├── .env               <- Environment File to load all necessary environment variables for local testing
 │
 └── tox.ini            <- tox file with settings for running tox to test general dependencies with the python interpreter chosen
-
+```
 
 --------
+
+<p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
