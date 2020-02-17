@@ -25,7 +25,7 @@ $ conda install cookiecutter
 
 ### To start a new project, run:
 
-------------;
+------------
 
     cookiecutter https://github.com/jindongyang94/cookiecutter-data-science-custom.git
 
@@ -35,7 +35,7 @@ $ conda install cookiecutter
 
 ### The resulting directory structure
 
-------------;
+------------
 
 The directory structure of your new project looks like this: 
 
@@ -92,7 +92,7 @@ The directory structure of your new project looks like this:
 
 ### Installing development requirements
 
-------------;
+------------
 
 '''python
     pip install -r requirements.txt
@@ -100,7 +100,7 @@ The directory structure of your new project looks like this:
 
 ### Running the tests
 
-------------;
+------------
 
 '''python
     py.test tests
