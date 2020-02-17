@@ -2,6 +2,7 @@ docs/site/
 
 # OSX Junk
 .DS_Store
+.vscode
 
 # test cache
 .cache/*
