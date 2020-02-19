@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements
+.PHONY: clean data lint requirements setup
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -18,14 +18,12 @@ endif
 # COMMANDS                                                                      #
 #################################################################################
 
-## Install Python Dependencies
-requirements: test_environment
-	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
-	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
+## Main Function to set up, create and test environment with installed dependencies.
+setup: create_environment start_environment requirements
 
-## Make Dataset
-data: requirements
-	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
+## Display file structures and content
+tree:
+	tree -I '*.png|*.jpg|*.pyc|*.mov|*.mp4|*pycache*|*.doctree|*.rst*|*.js|*.html|*.css'
 
 ## Delete all compiled Python files
 clean:
@@ -45,7 +43,7 @@ ifeq (3,$(findstring 3,$(PYTHON_INTERPRETER)))
 else
 	conda create --name $(PROJECT_NAME) python=2.7
 endif
-		@echo ">>> New conda env created. Activate with:\nsource activate $(PROJECT_NAME)"
+		@echo ">>> New conda env created. Activate with:\nconda activate $(PROJECT_NAME)"
 else
 	$(PYTHON_INTERPRETER) -m pip install -q virtualenv virtualenvwrapper
 	@echo ">>> Installing virtualenvwrapper if not already installed.\nMake sure the following lines are in shell startup file\n\
@@ -54,14 +52,28 @@ else
 	@echo ">>> New virtualenv created. Activate with:\nworkon $(PROJECT_NAME)"
 endif
 
+# Start Environment (Recommended to install Conda to create and install virtual environments)
+start_environment:
+ifeq (True,$(HAS_CONDA))
+	conda activate $(PROJECT_NAME)
+else
+	workon $(PROJECT_NAME)
+
+## Install Python Dependencies
+requirements: test_environment
+	$(PYTHON_INTERPRETER) -m pip install -U pip setuptools wheel
+	$(PYTHON_INTERPRETER) -m pip install -r requirements.txt
+
 ## Test python environment is setup correctly
 test_environment:
 	$(PYTHON_INTERPRETER) test_environment.py
-
+	
 #################################################################################
 # PROJECT RULES                                                                 #
 #################################################################################
-
+# ## Make Dataset
+# data: requirements
+# 	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
 
 
 #################################################################################
