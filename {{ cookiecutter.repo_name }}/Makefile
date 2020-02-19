@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements setup
+.PHONY: clean data lint requirements setup tree
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -58,6 +58,7 @@ ifeq (True,$(HAS_CONDA))
 	conda activate $(PROJECT_NAME)
 else
 	workon $(PROJECT_NAME)
+endif
 
 ## Install Python Dependencies
 requirements: test_environment

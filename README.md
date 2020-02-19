@@ -67,27 +67,26 @@ The directory structure of your new project looks like this:
 ├── src                <- Source code for use in this project.
 │   ├── __init__.py    <- Makes src a Python module
 │   │
-│   ├── utilities      <- Scripts for common functions used. The scripts can be split into company functions (functions used across all projects) and local functions (functions used only in this project)
+│   ├── utilities      <- Scripts for common functions used. The scripts can be split into company functions 
+│   │   │                 (functions used across all projects) and local functions (functions used only in this project)
 │   │   └── company_func.py
 │   │   └── project_func.py
 │   │
 │   ├── data           <- Scripts to download or generate data
-│   │   └── make_dataset.py
 │   │
-│   ├── features       <- Scripts to turn raw data into features for modeling
-│   │   └── build_features.py
+│   ├── features       <- Scripts to turn raw data into features for modeling : e.g. encoding, type conversion steps.
 │   │
 │   ├── models         <- Scripts to train models and then use trained models to make
 │   │   │                 predictions
-│   │   ├── predict_model.py
-│   │   └── train_model.py
+│   │   ├── train_model.py
+│   │   └── predict_model.py
 │   │
 │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
 │       └── visualize.py
 │
-├── .env               <- Environment File to load all necessary environment variables for local testing
+├── setup.py           <- Makes project pip installable (pip install -e .) so src can be imported
 │
-└── tox.ini            <- tox file with settings for running tox to test general dependencies with the python interpreter chosen
+└── .env               <- To load all necessary environment variables necessary for local development
 ```
 
 ### Installing development requirements
@@ -96,12 +95,4 @@ The directory structure of your new project looks like this:
 
 '''python
     pip install -r requirements.txt
-'''
-
-### Running the tests
-
-------------
-
-'''python
-    py.test tests
 '''
