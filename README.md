@@ -41,22 +41,22 @@ The directory structure of your new project looks like this:
 
 ```
 ├── LICENSE
-├── Makefile           <- Makefile with commands like `make data` or `make train`
+├── Makefile           <- Makefile with commands like `make setup` or `make clean`
 ├── README.md          <- The top-level README for developers using this project.
 ├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
+│   ├── metadata       <- Information about the tables given : Schema, Headers, etc.
+│   ├── mock_data
+│   │   ├── interim    <- Intermediate data that has been transformed.
+│   │   ├── processed  <- The final, canonical data sets for modeling.
+│   │   └── raw        <- The original, immutable data dump.
+│   └── scripts        <- SQL scripts used to create the datasets
 │
 │
 ├── models             <- Trained and serialized models, model predictions, or model summaries
 │
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`. 
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+├── notebooks          <- Jupyter notebooks.
+│   └── template.ipynb
+│                         
 │
 ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
 │   └── figures        <- Generated graphics and figures to be used in reporting
@@ -67,14 +67,19 @@ The directory structure of your new project looks like this:
 ├── src                <- Source code for use in this project.
 │   ├── __init__.py    <- Makes src a Python module
 │   │
-│   ├── utilities      <- Scripts for common functions used. The scripts can be split into company functions 
-│   │   │                 (functions used across all projects) and local functions (functions used only in this project)
-│   │   └── company_func.py
-│   │   └── project_func.py
+│   ├── config      <- Specifications used to determine fields, parameters etc. for preprocessing, 
+│   │                  modeling etc.
+│   │   └── template_model_specifications.yaml
+│   │
+│   ├── utilities      <- Scripts for common functions used. The scripts can be split into company 
+│   │                  functions (functions used across all projects) and local functions (functions 
+│   │                  used only in this project)
+│   │   └── e.g. company_func.py
+│   │   └── e.g. project_func.py
 │   │
 │   ├── data           <- Scripts to download or generate data
 │   │
-│   ├── features       <- Scripts to turn raw data into features for modeling : e.g. encoding, type conversion steps.
+│   ├── features       <- Scripts to turn raw data into features for modeling : e.g. encoding, type conversion │   │                     steps.
 │   │
 │   ├── models         <- Scripts to train models and then use trained models to make
 │   │   │                 predictions
@@ -86,7 +91,9 @@ The directory structure of your new project looks like this:
 │
 ├── setup.py           <- Makes project pip installable (pip install -e .) so src can be imported
 │
-└── .env               <- To load all necessary environment variables necessary for local development
+├── tests             <- Unittests, end-to-end local testing etc. with mock data to check code.
+│
+└── .env               <- Environment File to load all necessary environment variables for local testing
 ```
 
 ### Installing development requirements

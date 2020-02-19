@@ -16,7 +16,7 @@ Project Organization
 │   │   ├── interim    <- Intermediate data that has been transformed.
 │   │   ├── processed  <- The final, canonical data sets for modeling.
 │   │   └── raw        <- The original, immutable data dump.
-│   └── sql_scripts    <- SQL scripts used to create the datasets
+│   └── scripts        <- SQL scripts used to create the datasets
 │
 │
 ├── models             <- Trained and serialized models, model predictions, or model summaries
@@ -34,23 +34,31 @@ Project Organization
 ├── src                <- Source code for use in this project.
 │   ├── __init__.py    <- Makes src a Python module
 │   │
-│   ├── utilities      <- Scripts for common functions used. The scripts can be split into company functions (functions used across all projects) and local functions (functions used only in this project)
-│   │   └── company_func.py
-│   │   └── project_func.py
+│   ├── config      <- Specifications used to determine fields, parameters etc. for preprocessing, 
+│   │                  modeling etc.
+│   │   └── template_model_specifications.yaml
 │   │
-│   ├── data           <- Scripts to download or generate data for 
-│   │   └── preprocess.py
+│   ├── utilities      <- Scripts for common functions used. The scripts can be split into company 
+│   │                  functions (functions used across all projects) and local functions (functions 
+│   │                  used only in this project)
+│   │   └── e.g. company_func.py
+│   │   └── e.g. project_func.py
 │   │
-│   ├── train       <- Scripts to turn raw data into features for modeling
-│   │   └── build_features.py
+│   ├── data           <- Scripts to download or generate data
 │   │
-│   ├── models         <- Scripts to train models and then use trained models to make predictions
-│   │   │                 
-│   │   ├── predict_model.py
-│   │   └── train_model.py
+│   ├── features       <- Scripts to turn raw data into features for modeling : e.g. encoding, type conversion │   │                     steps.
+│   │
+│   ├── models         <- Scripts to train models and then use trained models to make
+│   │   │                 predictions
+│   │   ├── train_model.py
+│   │   └── predict_model.py
 │   │
 │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
 │       └── visualize.py
+│
+├── setup.py           <- Makes project pip installable (pip install -e .) so src can be imported
+│
+├── tests             <- Unittests, end-to-end local testing etc. with mock data to check code.
 │
 └── .env               <- Environment File to load all necessary environment variables for local testing
 ```
