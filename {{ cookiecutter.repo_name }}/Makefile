@@ -1,4 +1,4 @@
-.PHONY: clean data lint requirements setup tree
+.PHONY: clean data lint requirements tree
 
 #################################################################################
 # GLOBALS                                                                       #
@@ -17,9 +17,6 @@ endif
 #################################################################################
 # COMMANDS                                                                      #
 #################################################################################
-
-## Main Function to set up, create and test environment with installed dependencies.
-setup: create_environment start_environment requirements
 
 ## Display file structures and content
 tree:
@@ -51,6 +48,7 @@ else
 	@bash -c "source `which virtualenvwrapper.sh`;mkvirtualenv $(PROJECT_NAME) --python=$(PYTHON_INTERPRETER)"
 	@echo ">>> New virtualenv created. Activate with:\nworkon $(PROJECT_NAME)"
 endif
+	@echo "After activating your environment, run\nmake requirements\nto install the needed requirements into the environment"
 
 # Start Environment (Recommended to install Conda to create and install virtual environments)
 start_environment:
@@ -72,9 +70,6 @@ test_environment:
 #################################################################################
 # PROJECT RULES                                                                 #
 #################################################################################
-# ## Make Dataset
-# data: requirements
-# 	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/processed
 
 
 #################################################################################
